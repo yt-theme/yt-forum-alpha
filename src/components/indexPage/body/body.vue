@@ -1,0 +1,71 @@
+<template>
+  <div class="body flex">
+    <!-- bar -->
+    <div class="body_left_container">
+      <Leftbar :class="{'body_leftBar_container_normal':this.$store.state.body_leftBar_state==false, 'body_leftBar_container': this.$store.state.body_leftBar_state==true}"></Leftbar>
+    </div>
+
+    <!-- area -->
+    <div class="body_main_container">
+      <Mainarea></Mainarea>
+    </div>
+
+    <!-- right -->
+    <div class="body_right_container">
+      <Bodyright></Bodyright>
+    </div>
+
+    <!-- pop -->
+    <Popview v-if="$store.state.body_popView_state"></Popview>
+  </div>
+</template>
+
+<script>
+import Leftbar from './bodyCompo/body_leftBar'
+import Mainarea from './bodyCompo/body_mainArea'
+import Bodyright from './bodyCompo/body_right'
+import Popview from './bodyCompo/body_popView'
+export default {
+  components: {
+    Leftbar,
+    Mainarea,
+    Bodyright,
+    Popview
+  },
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
+</script>
+
+<style scope>
+.body {
+  height: 80vh;
+}
+.body_left_container, .body_right_container {
+  width: 10%;
+  min-width: 40px;
+}
+.body_main_container {
+  width: 80%;
+}
+.body_leftBar_container {
+  position: fixed;
+  left: 0;
+  top: 10%;
+}
+.body_leftBar_container_normal {
+  position: fixed;
+  left: -140px;
+  top: 10%;
+  transition: left 0.5s;
+}
+</style>
