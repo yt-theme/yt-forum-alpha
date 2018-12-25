@@ -17,7 +17,7 @@
               <!-- content -->
               <small>{{i.content_first}}</small>
               <!-- time -->
-              <small>{{i.time}}</small>
+              <small>发布时间: {{i.time}}&#8195;最后编辑: {{i.edit_times}}</small>
             </div>
           </div>
           <!-- list right -->
@@ -42,17 +42,17 @@ export default {
   data () {
     return {
       list_dat: [
-        { id: 1, title: '第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试', edit_times: 0, img: '', time: '2010-10-10', content_first: '这是发的第一个东西呢', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: 0, time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 1, title: '第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试', edit_times: '2010-10-10', img: '', time: '2010-10-10', content_first: '这是发的第一个东西呢', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
       ],
       currentPage: 1
     }
@@ -67,7 +67,7 @@ export default {
         title: obj.title,
         author: obj.author,
         id: obj.id,
-        edit_times: obj.edit_times,
+        time: obj.time,
         reply: obj.reply,
         liked: obj.like
       })
@@ -109,7 +109,7 @@ export default {
 }
 .body_mainArea_page {
   position: fixed;
-  top: 10%;
+  top: 47px;
   left: 10%;
   border-radius: 0 0 50px 50px;
   color: #fafafa;

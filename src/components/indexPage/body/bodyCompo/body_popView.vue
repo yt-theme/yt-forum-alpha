@@ -11,7 +11,7 @@
           <h4>标题: {{this.$store.state.body_popView_article.title.length>19 ? this.$store.state.body_popView_article.title.substring(0, 19) + '...' : this.$store.state.body_popView_article.title}}</h4>
           <h4>作者: {{this.$store.state.body_popView_article.author}}</h4>
           <h4>文章流水号: {{this.$store.state.body_popView_article.id}}</h4>
-          <h4>编辑时间: {{this.$store.state.body_popView_article.edit_times}}</h4>
+          <h4>发布时间: {{this.$store.state.body_popView_article.time}}</h4>
         </div>
         <div class="t_align_r  w_20">
           <span>回复: {{this.$store.state.body_popView_article.reply}}</span>&#8195;
@@ -41,8 +41,25 @@
         </div>
 
         <!-- right -->
-        <div style="min-width: 140px;" class="w_20 h_100 over_a padd_8">
-          rep
+        <div style="min-width: 140px;" class="w_20 h_100 over_a">
+          <ul class="li_s_n">
+            <template v-for="i in replyData_list">
+              <li class="bor_l_wh marg_tb_2e padd_l_8">
+
+                <!-- top -->
+                <div class="w_20 flex">
+                  <img style="border: 1px solid red; width: 30px; height: 30px;" :src="i.user_logo" class="block"/>
+                  <span class="marg_4">{{i.user_name}}</span>
+                </div>
+
+                <!-- bottom -->
+                <div>
+                  <span>{{i.content}}</span>
+                </div>
+
+              </li>
+            </template>
+          </ul>
         </div>
 
       </div>
@@ -54,7 +71,7 @@
               <button @click="edit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">编辑</button>
             </template>
             <template v-else-if="editStat==true">
-              <button @click="save()">保存</button>
+              <button @click="save()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">保存</button>
               <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">取消编辑</button>
             </template>
           </template>
@@ -63,7 +80,7 @@
           <i></i>
           <div>
             <button class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">回复</button>
-            <button class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">喜欢</button>
+            <button class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">喜欢</button>
           </div>
         </div>
       </div>
@@ -86,6 +103,45 @@ export default {
       current_editable: true,
       // 是否正在编辑
       editStat: false,
+      // 评论
+      replyData_list: [
+        {
+          id: 1,
+          user_logo: '',
+          user_name: 'ytusyds',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+        {
+          id: 2,
+          user_logo: '',
+          user_name: 'ytus',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+        {
+          id: 3,
+          user_logo: '',
+          user_name: 'ys',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+         {
+          id: 3,
+          user_logo: '',
+          user_name: 'ys',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+         {
+          id: 3,
+          user_logo: '',
+          user_name: 'ys',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+         {
+          id: 3,
+          user_logo: '',
+          user_name: 'ys',
+          content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
+        },
+      ]
     }
   },
   methods: {
@@ -139,8 +195,7 @@ export default {
 }
 .body_popView_title {
   height: 50px;
-  border: 1px solid red;
-  vertical-align:bottom;
+  vertical-align: bottom;
 }
 .body_popView_title> div:first-child> h4 {
   float: left;
@@ -148,10 +203,8 @@ export default {
 }
 .body_popView_main {
   height: calc(100% - 100px);
-  border: 1px solid red;
 }
 .body_popView_footer {
   height: 50px;
-  border: 1px solid red;
 }
 </style>

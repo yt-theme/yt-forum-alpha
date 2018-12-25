@@ -1,7 +1,7 @@
 <template>
   <div class="header padd_8 flex">
       <!-- line no1 -->
-      <div class="header_left">
+      <div class="header_left flex_cent">
         环视地球分部
       </div>
       <div class="header_main_area">
@@ -72,9 +72,7 @@ export default {
 
 <style scope>
 .header {
-  height: 10%;
   min-height: 45px;
-  max-height: 135px;
   background-color: #7A7E7E;
   color: #f1f1f1;
 }

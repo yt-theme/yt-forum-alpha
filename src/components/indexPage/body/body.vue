@@ -48,7 +48,7 @@ export default {
 
 <style scope>
 .body {
-  height: 80vh;
+  height: calc(100vh - 47px);
 }
 .body_left_container, .body_right_container {
   width: 10%;
