@@ -62,14 +62,18 @@
 /* padding */
 .padd_8 { padding: 8px; }
 .padd_l_8 { padding-left: 8px; }
-.padd_4 { padding: 4px }
+.padd_2 { padding: 2px; }
+.padd_4 { padding: 4px; }
 .padd_lr_18 { margin-left: 18px; margin-right: 18px; }
 
 /* margin */
-.marg_4 { margin: 4px }
-.marg_11 { margin: 11px }
+.marg_2 { margin: 2px; }
+.marg_4 { margin: 4px; }
+.marg_11 { margin: 11px; }
 .marg_lr_8 { margin-left: 7px; margin-right: 7px; }
-.marg_tb_2e { margin-top: 2em; margin-bottom: 2em; }
+.marg_l_8 { margin-left: 8px; }
+.marg_b_2e { margin-bottom: 2em; }
+.marg_0 { margin: 0; }
 
 /* overflow */
 .over_a { overflow: auto; }

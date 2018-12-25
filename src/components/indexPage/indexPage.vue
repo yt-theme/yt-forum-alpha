@@ -23,7 +23,7 @@ export default {
 <style scope>
 .indexPage {
   width: 100vw;
-  min-width: 356px;
+  min-width: 875px;
   height: 100vh;
 }
 </style>

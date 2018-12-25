@@ -41,15 +41,18 @@
         </div>
 
         <!-- right -->
-        <div style="min-width: 140px;" class="w_20 h_100 over_a">
+        <div style="min-width: 140px;" class="w_20 h_100 over_a marg_l_8">
           <ul class="li_s_n">
             <template v-for="i in replyData_list">
-              <li class="bor_l_wh marg_tb_2e padd_l_8">
+              <li class="bor_l_wh marg_b_2e padd_l_8">
 
                 <!-- top -->
-                <div class="w_20 flex">
-                  <img style="border: 1px solid red; width: 30px; height: 30px;" :src="i.user_logo" class="block"/>
-                  <span class="marg_4">{{i.user_name}}</span>
+                <div class="flex_betw">
+                  <div class="flex">
+                    <img style="border: 1px solid red; width: 30px; height: 30px;" :src="i.user_logo" class="block"/>
+                    <span class="marg_4">{{i.user_name}}</span>
+                  </div>
+                  <button class="bor_ra_3 bor_0 padd_2 bgc_ligh_gray marg_2 space_nowrap">回复</button>
                 </div>
 
                 <!-- bottom -->
@@ -72,14 +75,18 @@
             </template>
             <template v-else-if="editStat==true">
               <button @click="save()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">保存</button>
-              <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">取消编辑</button>
+              <span class="pos_r">
+                <input style="width: 4.5em; opacity: 0;" type="file" class="pos_a bor_ra_3 bor_0 bgc_ligh_gray marg_0" value="上传图片">
+                <button @click="uploadFile()" class="bor_ra_3 top_0 bor_0 padd_4 bgc_ligh_gray">上传文件</button>
+              </span>
+              <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">取消编辑</button>
             </template>
           </template>
         </div>
         <div style="min-width: 140px;" class="w_20 flex just_bet">
           <i></i>
           <div>
-            <button class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">回复</button>
+            <button class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">评论</button>
             <button class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">喜欢</button>
           </div>
         </div>
@@ -166,10 +173,11 @@ export default {
 
 <style scope>
 .body_popView {
-  position: fixed;
+  position: absolute;
   top: 5vh;
   left: 5vw;
   width: 90vw;
+  min-width: 800px;
   height: 90vh;
   border: 2px solid rgba(255,255,255,0.5);
   background-color: #464646;
