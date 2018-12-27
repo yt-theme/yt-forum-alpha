@@ -15,6 +15,7 @@
 /* display */
 .d_none { display: none; }
 .block { display: block; }
+.inl_block { display: inline-block; }
 .flex { display: flex; }
 .flex_cent { display: flex; justify-content: center; align-items: center; }
 .flex_betw { display: flex; justify-content: space-between; align-items: center; }
@@ -85,6 +86,7 @@
 
 /* overflow */
 .over_a { overflow: auto; }
+.over_h { overflow: hidden; }
 
 /* z-index */
 .z_999 { z-index: 999; }
