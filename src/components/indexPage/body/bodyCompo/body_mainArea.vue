@@ -22,17 +22,17 @@
           </div>
           <!-- list right -->
           <div class="body_mainArea_r padd_4 flex flex_d_c">
-            <p class="space_nowrap"><span>reply:</span> {{i.reply}}</p>
-            <p class="space_nowrap"><span>liked:</span> {{i.like}}</p>
+            <p class="space_nowrap"><span>{{i.reply}}</span>&nbsp;&nbsp;reply</p>
+            <p class="space_nowrap"><span>{{i.like}}</span>&nbsp;&nbsp;liked</p>
           </div>
         </li>
       </template>
     </ul>
     <!-- page -->
     <div class="body_mainArea_page flex_betw padd_lr_18">
-      <button class="flex_cent w_100 cur_p padd_4">{{'<'}}</button>
-      <span class="flex_cent w_100 padd_4">{{currentPage}}</span>
-      <button class="flex_cent w_100 cur_p padd_4">{{'>'}}</button>
+      <button @click="changePage_sub()" class="flex_cent w_100 cur_p padd_4">{{'<'}}</button>
+      <span class="flex_cent w_100">第&nbsp;{{currentPage}}&nbsp;页</span>
+      <button @click="changePage_add()" class="flex_cent w_100 cur_p padd_4">{{'>'}}</button>
     </div>
   </div>
 </template>
@@ -42,9 +42,9 @@ export default {
   data () {
     return {
       list_dat: [
-        { id: 1, title: '第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试', edit_times: '2010-10-10', img: '', time: '2010-10-10', content_first: '这是发的第一个东西呢', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
-        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
+        { id: 1, title: '第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试第一个东西的测试', edit_times: '2010-10-10', img: '', time: '2010-10-10', content_first: '这是发的第一个东西呢', author: 'a', reply: 10000, like: 10000 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 10000, like: 10000 },
+        { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 10000, like: 10000 },
         { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
         { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
         { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
@@ -54,7 +54,13 @@ export default {
         { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
         { id: 2, title: 'test', img: '', edit_times: '2010-10-10', time: '2010-10-10', content_first: 'testing', author: 'a', reply: 1, like: 1 },
       ],
-      currentPage: 1
+      currentPage: this.$route.params.page
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.currentPage = Number(to.params.page)
+      this.changeRouter_toRequireData(this.currentPage)
     }
   },
   methods: {
@@ -73,6 +79,21 @@ export default {
       })
       // popView show
       this.$store.dispatch('set_body_popView_state', true)
+    },
+    // page sub
+    changePage_sub () {
+      let that = this
+      this.currentPage = (function() { return that.currentPage > 1 ? that.currentPage - 1 : 1 })()
+      this.$router.push('/index_page/' + this.currentPage)
+    },
+    // page add
+    changePage_add () {
+      this.currentPage = Number(this.currentPage) + 1
+      this.$router.push('/index_page/' + this.currentPage)
+    },
+    // 路由改变请求数据
+    changeRouter_toRequireData (page) {
+
     }
   }
 }
@@ -109,11 +130,15 @@ export default {
 }
 .body_mainArea_page {
   position: fixed;
-  top: 47px;
+  top: 45px;
   left: 10%;
-  border-radius: 0 0 50px 50px;
+  border-radius: 0 0 40px 40px;
   color: #fafafa;
-  box-shadow: 0 0 1000px #414141 inset,  0 0 4px #414141;
+  background-color: #7A7E7E;
+  border-top: 0;
+  border-left: 1px solid #f1f1f3;
+  border-right: 1px solid #f1f1f3;
+  border-bottom: 1px solid #f1f1f3;
 }
 .body_mainArea_page> button {
   min-width: 70px;

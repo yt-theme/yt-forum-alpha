@@ -17,6 +17,7 @@
 
     <!-- pop -->
     <Popview v-if="$store.state.body_popView_state"></Popview>
+    <PopPub v-show="$store.state.body_popPub_state"></PopPub>
   </div>
 </template>
 
@@ -25,12 +26,14 @@ import Leftbar from './bodyCompo/body_leftBar'
 import Mainarea from './bodyCompo/body_mainArea'
 import Bodyright from './bodyCompo/body_right'
 import Popview from './bodyCompo/body_popView'
+import PopPub from './bodyCompo/body_popPub'
 export default {
   components: {
     Leftbar,
     Mainarea,
     Bodyright,
-    Popview
+    Popview,
+    PopPub
   },
   data () {
     return {

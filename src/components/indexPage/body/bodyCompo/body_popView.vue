@@ -1,5 +1,5 @@
 <template>
-  <div class="body_popView">
+  <div class="body_popView pos_r">
     <!-- close -->
     <i @click="popViewClose()" class="body_popView_close"></i>
     <!-- content -->
@@ -52,7 +52,7 @@
                     <img style="border: 1px solid red; width: 30px; height: 30px;" :src="i.user_logo" class="block"/>
                     <span class="marg_4">{{i.user_name}}</span>
                   </div>
-                  <button class="bor_ra_3 bor_0 padd_2 bgc_ligh_gray marg_2 space_nowrap">回复</button>
+                  <!-- <button class="bor_ra_3 bor_0 padd_2 bgc_ligh_gray marg_2 space_nowrap">回复</button> -->
                 </div>
 
                 <!-- bottom -->
@@ -67,31 +67,36 @@
 
       </div>
       <!-- footer -->
-      <div class="body_popView_footer flex">
-        <div class="w_80">
+      <div class="body_popView_footer flex_betw">
+        <div>
           <template v-if="current_editable">
             <template v-if="editStat==false">
-              <button @click="edit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">编辑</button>
+              <button @click="edit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">编辑</button>
             </template>
             <template v-else-if="editStat==true">
-              <button @click="save()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">保存</button>
+              <button @click="save()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">保存</button>
               <span class="pos_r">
                 <input style="width: 4.5em; opacity: 0;" type="file" class="pos_a bor_ra_3 bor_0 bgc_ligh_gray marg_0" value="上传图片">
-                <button @click="uploadFile()" class="bor_ra_3 top_0 bor_0 padd_4 bgc_ligh_gray">上传文件</button>
+                <button @click="uploadFile()" class="bor_ra_3 top_0 bor_0 padd_4 bgc_ligh_gray bor_wh">上传文件</button>
               </span>
-              <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">取消编辑</button>
+              <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">取消编辑</button>
             </template>
           </template>
         </div>
-        <div style="min-width: 140px;" class="w_20 flex just_bet">
+        <div style="min-width: 140px;" class="flex just_bet">
           <i></i>
-          <div>
-            <button class="bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray">评论</button>
-            <button class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray">喜欢</button>
+          <div class="flex_cent">
+            <!-- 回复输入-->
+            <textarea style="height: 29px;"  v-if="isReply" placeholder="评论" class="body_popView_replyTextarea bgc_gray bor_ra_3 resize_non bor_0 wh_100 marg_lr_8 padd_4">{{replyContent}}</textarea>
+            <button v-if="isReply" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">发送</button>
+            <button @click="reply()" :class="{'bgc_dark white_color': isReply, 'bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray bor_wh': true}">评论</button>
+            <button class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">喜欢</button>
           </div>
         </div>
       </div>
     </div>
+
+
   </div>
 </template>
 
@@ -148,7 +153,11 @@ export default {
           user_name: 'ys',
           content: "评论评论评论评论评论评论评语领班琟分文不值主食一",
         },
-      ]
+      ],
+      // 评论 显示弹窗
+      isReply: false,
+      // 评论 文字
+      replyContent: ''
     }
   },
   methods: {
@@ -163,7 +172,13 @@ export default {
     },
     cancelEdit () {
       this.editStat = false
+    },
+    // 评论
+    reply () {
+      this.isReply = !this.isReply
     }
+    // 评论 文字
+
   },
   mounted () {
     // 加载时请求 内容 数据
@@ -177,7 +192,7 @@ export default {
   top: 5vh;
   left: 5vw;
   width: 90vw;
-  min-width: 800px;
+  min-width: 860px;
   height: 90vh;
   border: 2px solid rgba(255,255,255,0.5);
   background-color: #464646;
@@ -214,5 +229,9 @@ export default {
 }
 .body_popView_footer {
   height: 50px;
+}
+.body_popView_replyTextarea {
+  width: 190px;
+  height: 100%;
 }
 </style>

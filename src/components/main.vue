@@ -1,16 +1,12 @@
 <template>
   <div>
-    <Indexpage class="bgc_ligh_gray"></Indexpage>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Indexpage from './indexPage/indexPage'
 export default {
   name: 'Main',
-  components: {
-    Indexpage
-  },
   data () {
     return {
 

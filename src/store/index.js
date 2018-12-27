@@ -17,7 +17,9 @@ export default new Vuex.Store({
       edit_times: 0,
       reply: 0,
       liked: 1
-    }
+    },
+    // body popPub
+    body_popPub_state: false
   },
   mutations: {
     // header menu
@@ -30,6 +32,10 @@ export default new Vuex.Store({
     },
     change_body_popView_article (state, obj) {
       state.body_popView_article = obj
+    },
+    // body popPub
+    change_body_popPub_state (state, bool) {
+      state.body_popPub_state = bool
     }
   },
   actions: {
@@ -43,6 +49,10 @@ export default new Vuex.Store({
     },
     set_body_popView_article (context, obj) {
       context.commit('change_body_popView_article', obj)
+    },
+    // body popPub
+    set_body_popPub_state (context, bool) {
+      context.commit('change_body_popPub_state', bool)
     }
   }
 })

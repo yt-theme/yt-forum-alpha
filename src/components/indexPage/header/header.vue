@@ -1,12 +1,15 @@
 <template>
   <div class="header padd_8 flex">
       <!-- line no1 -->
-      <div class="header_left flex_cent">
+      <div class="header_left flex_cent space_nowrap">
         环视地球分部
       </div>
-      <div class="header_main_area">
+      <div class="header_main_area flex_betw">
         <div class="header_main_area_search">
           <input placeholder="Search"/>
+        </div>
+        <div>
+          <button @click="publish()" :class="{'bgc_opa_gray white_color': isPub, 'bor_ra_3 bor_0 padd_4 marg_lr_8 bgc_ligh_gray bor_wh': true}">发布</button>
         </div>
       </div>
       <template v-if="loginStat">
@@ -44,16 +47,24 @@
 export default {
   data () {
     return {
+      // login
       userName: 'yt',
       level: 1,
 
       form_name: '',
       form_pswd: '',
 
-      loginStat: false
+      loginStat: false,
+
+      // pub
+      isPub: false,
     }
   },
   methods: {
+    publish() {
+      this.isPub = !this.isPub
+      this.isPub ? this.$store.dispatch('set_body_popPub_state', true) : this.$store.dispatch('set_body_popPub_state', false)
+    },
     logout () {
       alert('out')
     },
