@@ -78,6 +78,7 @@
               <span class="pos_r">
                 <input style="width: 4.5em; opacity: 0;" type="file" class="pos_a bor_ra_3 bor_0 bgc_ligh_gray marg_0" value="上传图片">
                 <button @click="uploadFile()" class="bor_ra_3 top_0 bor_0 padd_4 bgc_ligh_gray bor_wh">上传文件</button>
+                <button v-if="uploadFile_number>0" @click="showUploadFileList()" :class="{'bgc_opa_gray white_color': uploadFileList_show, 'bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh': true}">选择文件</button>
               </span>
               <button @click="cancelEdit()" class="bor_ra_3 bor_0 padd_4 bgc_ligh_gray bor_wh">取消编辑</button>
             </template>
@@ -95,13 +96,19 @@
         </div>
       </div>
     </div>
-
-
+    <!-- 文件选择框 -->
+    <div v-if="uploadFileList_show" class="body_popView_fileBox pos_a bgc_dark bor_ra_5">
+      <Uploadfilelistbox></Uploadfilelistbox>
+    </div>
   </div>
 </template>
 
 <script>
+import Uploadfilelistbox from "../../../publicCompo/uploadFileListBox"
 export default {
+  components: {
+    Uploadfilelistbox
+  },
   data () {
     return {
       contentData: {
@@ -111,6 +118,8 @@ export default {
 
         }
       },
+      // 文件数量
+      uploadFile_number: 1,
       // 编辑权限
       current_editable: true,
       // 是否正在编辑
@@ -157,7 +166,9 @@ export default {
       // 评论 显示弹窗
       isReply: false,
       // 评论 文字
-      replyContent: ''
+      replyContent: '',
+      // 显示 文件选择框
+      uploadFileList_show: false
     }
   },
   methods: {
@@ -169,15 +180,21 @@ export default {
     },
     save () {
       this.editStat = false
+      this.uploadFileList_show = false
     },
     cancelEdit () {
       this.editStat = false
+      // 文件选择框关闭
+      this.uploadFileList_show = false
     },
     // 评论
     reply () {
       this.isReply = !this.isReply
+    },
+    // 显示文件选择框
+    showUploadFileList () {
+      this.uploadFileList_show = ! this.uploadFileList_show
     }
-    // 评论 文字
 
   },
   mounted () {
@@ -189,7 +206,7 @@ export default {
 <style scope>
 .body_popView {
   position: absolute;
-  top: 5vh;
+  top: 7.9vh;
   left: 5vw;
   width: 90vw;
   min-width: 860px;
@@ -233,5 +250,9 @@ export default {
 .body_popView_replyTextarea {
   width: 190px;
   height: 100%;
+}
+.body_popView_fileBox {
+  left: 4px;
+  bottom: 61px;
 }
 </style>

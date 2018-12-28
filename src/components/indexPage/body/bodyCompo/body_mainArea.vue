@@ -103,7 +103,6 @@ export default {
 .body_mainArea {
   width: 100%;
   height: 100%;
-  padding: 7px;
 }
 .body_mainArea_list {
   color: #fafafa;
@@ -131,7 +130,7 @@ export default {
 .body_mainArea_page {
   position: fixed;
   top: 45px;
-  left: 10%;
+  right: calc(20% + 8px);
   border-radius: 0 0 40px 40px;
   color: #fafafa;
   background-color: #7A7E7E;

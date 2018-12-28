@@ -1,9 +1,9 @@
 <template>
   <div class="body flex">
     <!-- bar -->
-    <div class="body_left_container">
+    <!-- <div class="body_left_container">
       <Leftbar :class="{'body_leftBar_container_normal':this.$store.state.body_leftBar_state==false, 'body_leftBar_container': this.$store.state.body_leftBar_state==true}"></Leftbar>
-    </div>
+    </div> -->
 
     <!-- area -->
     <div class="body_main_container">
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import Leftbar from './bodyCompo/body_leftBar'
+// import Leftbar from './bodyCompo/body_leftBar'
 import Mainarea from './bodyCompo/body_mainArea'
 import Bodyright from './bodyCompo/body_right'
 import Popview from './bodyCompo/body_popView'
 import PopPub from './bodyCompo/body_popPub'
 export default {
   components: {
-    Leftbar,
+    // Leftbar,
     Mainarea,
     Bodyright,
     Popview,
@@ -53,14 +53,14 @@ export default {
 .body {
   height: calc(100vh - 47px);
 }
-.body_left_container, .body_right_container {
-  width: 10%;
-  min-width: 40px;
+.body_right_container {
+  width: 20%;
+  min-width: 100px;
 }
 .body_main_container {
   width: 80%;
 }
-.body_leftBar_container {
+/* .body_leftBar_container {
   position: fixed;
   left: 0;
   top: 10%;
@@ -70,5 +70,5 @@ export default {
   left: -140px;
   top: 10%;
   transition: left 0.5s;
-}
+} */
 </style>

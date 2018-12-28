@@ -5,8 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // header menu
-    body_leftBar_state: false,
+    // 通知
+    notifyState: {
+      title: '',
+      content: '',
+      show: false
+    },
+    // // header menu
+    // body_leftBar_state: false,
     // body popView
     body_popView_state: false,
     // popView article
@@ -22,10 +28,28 @@ export default new Vuex.Store({
     body_popPub_state: false
   },
   mutations: {
-    // header menu
-    change_body_leftBar_state (state, bool) {
-      state.body_leftBar_state = bool
+    // 通知
+    change_notifyState (state, obj) {
+      state.notifyState = {
+        title: obj.title ? obj.title : '',
+        content: obj.content ? obj.content : '',
+        show: obj.show
+      }
+      // 超时关闭
+      if (obj.show) {
+        setTimeout(() => {
+          state.notifyState = {
+            title: '',
+            content: '',
+            show: false
+          }
+        }, 3000)
+      }
     },
+    // // header menu
+    // change_body_leftBar_state (state, bool) {
+    //   state.body_leftBar_state = bool
+    // },
     // body popView
     change_body_popView_state (state, bool) {
       state.body_popView_state = bool
@@ -39,10 +63,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    // header menu
-    set_body_leftBar_state (context, bool) {
-      context.commit('change_body_leftBar_state', bool)
+    // 通知
+    set_notifyState (context, obj) {
+      context.commit('change_notifyState', obj)
     },
+    // // header menu
+    // set_body_leftBar_state (context, bool) {
+    //   context.commit('change_body_leftBar_state', bool)
+    // },
     // body popView
     set_body_popView_state (context, bool) {
       context.commit('change_body_popView_state', bool)
