@@ -163,7 +163,7 @@ export default {
 }
 .updataFileList_wrap {
   top: 80px;
-  width: 330px;
+  width: 570px;
   background-color: #464646;
 }
 </style>

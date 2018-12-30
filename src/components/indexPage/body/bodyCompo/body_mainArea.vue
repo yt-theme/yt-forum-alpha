@@ -1,9 +1,9 @@
 <template>
-  <div class="body_mainArea pos_r over_a">
+  <div class="body_mainArea pos_r over_a bgc_ligh_gray">
     <!-- list -->
     <ul class="w_100">
       <template v-for="i in list_dat">
-        <li @click="popViewShow(i)" class="body_mainArea_list flex just_bet padd_8 marg_11 bor_ra_3 cur_p">
+        <li @click="popViewShow(i)" class="body_mainArea_list flex just_bet padd_8 marg_2 bor_ra_3 cur_p">
           <!-- list left -->
           <div class="flex">
             <!-- img -->
@@ -135,9 +135,9 @@ export default {
   color: #fafafa;
   background-color: #7A7E7E;
   border-top: 0;
-  border-left: 1px solid #f1f1f3;
-  border-right: 1px solid #f1f1f3;
-  border-bottom: 1px solid #f1f1f3;
+  border-left: 2px solid #f1f1f3;
+  border-right: 2px solid #f1f1f3;
+  border-bottom: 2px solid #f1f1f3;
 }
 .body_mainArea_page> button {
   min-width: 70px;

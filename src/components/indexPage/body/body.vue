@@ -54,11 +54,10 @@ export default {
   height: calc(100vh - 47px);
 }
 .body_right_container {
-  width: 20%;
-  min-width: 100px;
+  width: 200px;
 }
 .body_main_container {
-  width: 80%;
+  width: 100%;
 }
 /* .body_leftBar_container {
   position: fixed;
